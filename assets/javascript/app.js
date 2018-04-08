@@ -10,7 +10,7 @@ $.fn.trivia = function() {
     _t.current = 0;
     _t.questions = [{
         question: "When you’re capernoited, what are you?",
-        choices: ["SLightly Afraid", "Slightly drunk", "Slightly embarrassed", "Slightly out of tune"],
+        choices: ["Slightly Afraid", "Slightly drunk", "Slightly embarrassed", "Slightly out of tune"],
         images: ["../images/PH.gif"],
         correct: 1
     }, {
@@ -45,13 +45,13 @@ $.fn.trivia = function() {
 
     }, {
         question: "Iatrapistia is the lack of faith in what?",
-        choices: ["The medical system", "The judical system", "Tehe educational system", "The fear of overworking"],
+        choices: ["The medical system", "The judical system", "The educational system", "The fear of overworking"],
         correct: 3
     }];
     _t.ask = function() {
         if (_t.questions[_t.current]) {
             $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
-            $("#question_div").html(_t.questions[_t.current].question);
+            $("#questionArea").html(_t.questions[_t.current].question);
             var choicesArr = _t.questions[_t.current].choices;
             var buttonsArr = [];
 
@@ -59,7 +59,7 @@ $.fn.trivia = function() {
                 var button = $('<button>');
                 button.text(choicesArr[i]);
                 button.attr('data-id', i);
-                $('#choices_div').append(button);
+                $('#choicesArea').append(button);
             }
             window.triviaCounter = setInterval(_t.timer, 1000);
         } else {
@@ -68,7 +68,7 @@ $.fn.trivia = function() {
                     _t.questions.length - (_t.answers.correct + _t.answers.incorrect)),
                 class: 'result'
             }));
-            $('#start_button').text('Restart').appendTo('body').show();
+            $('#startB').text('Restart').appendTo('body').show();
         }
     };
     _t.timer = function() {
@@ -78,7 +78,7 @@ $.fn.trivia = function() {
                 _t.nextQ();
             });
 
-        } else {
+        } else {  //do I need this else?
             $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
         }
     };
@@ -90,7 +90,7 @@ $.fn.trivia = function() {
         setTimeout(function() {
             _t.cleanUp();
             _t.ask();
-        }, 1000)
+        }, 2500)
     };
     _t.cleanUp = function() {
         $('div[id]').each(function(item) {
@@ -108,7 +108,7 @@ $.fn.trivia = function() {
 };
 var Trivia;
 
-$("#start_button").click(function() {
+$("#startB").click(function() {
     $(this).hide();
     $('.result').remove();
     $('div').html('');
@@ -116,17 +116,17 @@ $("#start_button").click(function() {
     Trivia.ask();
 });
 
-$('#choices_div').on('click', 'button', function(e) {
+$('#choicesArea').on('click', 'button', function(e) {
     var userPick = $(this).data("id"),
         _t = Trivia || $(window).trivia(),
-        index = _t.questions[_t.current].correct,
-        correct = _t.questions[_t.current].choices[index];
+        temp = _t.questions[_t.current].correct,
+        correct = _t.questions[_t.current].choices[temp];
 
-    if (userPick !== index) {
-        $('#choices_div').text("Wrong Answer! The correct answer was: " + correct);
+    if (userPick !== temp) {
+        $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
         _t.answer(false);
     } else {
-        $('#choices_div').text("Correct!!! The correct answer was: " + correct);
+        $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
         _t.answer(true);
     }
     _t.nextQ();
