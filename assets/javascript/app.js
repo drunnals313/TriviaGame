@@ -11,42 +11,84 @@ $.fn.trivia = function() {
     _t.questions = [{
         question: "When you’re capernoited, what are you?",
         choices: ["Slightly Afraid", "Slightly drunk", "Slightly embarrassed", "Slightly out of tune"],
-        images: ["../images/PH.gif"],
+        //images: ["../images/vo.gif"],
         correct: 1
     }, {
         question: "Cleromancy is divination involving what?",
         choices: ["Dice", "Glass", "Twigs", "Ink"],
         correct: 0
-
     }, {
         question: "What does a nuxodeltiologist prefer postcard scenes of?",
         choices: ["The road", "The trees", "The ocean", "The night"],
         correct: 3
-
     }, {
         question: "What do you have when you’re sciapodous?",
         choices: ["Huge Nose", "Huge chin", "Huge feet", "Huge ears"],
         correct: 2
-
     }, {
         question: "What are you full of when you’re gambrinous?",
         choices: ["Beer", "Joy", "Chicken", "Sweat"],
         correct: 0
-
     }, {
         question: "Tropoclastics is actually the science of?",
         choices: ["House keeping", "Ancient writing", "Breaking habits", "Eavesdropping"],
         correct: 2
-
     }, {
         question: "What do you most fear in hormephobia?",
         choices: ["Salivia", "Shock", "Static", "Silence"],
         correct: 1
-
+    }, {
+        question: "What does ponophobia mean?",
+        choices: ["The fear of overheating", "The fear of oversleeping", "The fear of overthinking", "The fear of overworking"],
+        correct: 3
     }, {
         question: "Iatrapistia is the lack of faith in what?",
-        choices: ["The medical system", "The judical system", "The educational system", "The fear of overworking"],
+        choices: ["The medical system", "The judical system", "The educational system", "The legal system"],
+        correct: 0
+    }, {
+        question: "Where is the dactylion?",
+        choices: ["Thumb", "Forfinger", "Middle finger", "Ring Finger"],
+        correct: 2
+    }, {
+        question: "Presbycusis is the loss of what at old age?",
+        choices: ["Smelling", "Hearing", "Tasting", "Feeling"],
+        correct: 1
+    }, {
+        question: "An icononmicar writes about what?",
+        choices: ["Illness", "Religion", "Farming", "Desserts"],
+        correct: 2
+    }, {
+        question: "When you’re a stagiary, what are you a student of?",
+        choices: ["Medicine", "Law", "Geology", "Philosophy"],
+        correct: 1
+    }, {
+        question: "What do you love eating as a pagophagiac?",
+        choices: ["Fingernails", "Ash", "Pips", "Ice"],
         correct: 3
+    }, {
+        question: "What does napiform mean?",
+        choices: ["Turnip-shaped", "Car-shaped", "Hinge-shaped", "Arch-Shaped"],
+        correct: 0
+    }, {
+        question: "What’s another word for chirotonsor?",
+        choices: ["A masseur", "A carpenter", "A barber", "A dentist"],
+        correct: 2
+    }, {
+        question: "What’s limerance the initial thrill of?",
+        choices: ["Getting a job", "Falling in love", "Learning to write", "Buying a house"],
+        correct: 1
+    }, {
+        question: "What is a wheeple?",
+        choices: ["A poor attempt at whistling", "A poor attempt at listening", "A poor attempt at sneezing", "A poor attempt at hugging"],
+        correct: 0
+    }, {
+        question: "What does psithurism describe the sound of?",
+        choices: ["Flowing water", "Rustling leaves", "Keyboard typing", "Hammer nailing"],
+        correct: 1
+    }, {
+        question: "A person who’s a fysigunkus lacks what?",
+        choices: ["Humor", "Wisdom", "Curiousity", "Temper"],
+        correct: 2
     }];
     _t.ask = function() {
         if (_t.questions[_t.current]) {
