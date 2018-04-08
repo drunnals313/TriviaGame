@@ -1,3 +1,26 @@
+div {
+    margin-bottom: 20px;
+}
+.correct, .incorrect {
+    text-transform: capitalize;
+    font-weight: bolder;
+    font-size: 20px;
+}
+#question_div {
+    font-weight: bolder;
+    font-size: 20px;
+    
+}
+
+
+
+
+
+
+
+
+
+
 .crystal-image  {
         width: 200px;
         height: 150px;

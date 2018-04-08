@@ -14,72 +14,25 @@
 <link rel="stylesheet" href="assets/css/style.css" />
   
 
-<!-- Added a link to Bootstrap-->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
 
     <!-- Added link to the jQuery Library -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   
 </head>
 
 <body>
-    <div class="container" id="collectorTitle">
-        <h1>CrystalsCollector!</h1>
-    </div>
-
-    <div class="row" id="directions" class="container">
-        <p>
-            You will be given a random number at the start of the game.
     
-            There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
-        
-            You win the game by making your total score to random number, you lose the game if your total score goes above the random number.
-        
-            The value of each crystal is hidden from you until you click on it.
-        
-            Each time when the game starts, the game will change the values of each crystal.
-        </p>
-    </div>
-
-    <div class="container" class="row">
-        <div class="col-md-3" id="guessBox">
-            <h1>Number to Guess: <span id="number-to-guess"></span></h1>
-        </div>
-<!-- cannot get win and lose messages to display in time before I rest everything -->
-        <div class="col-md-3" id="messageBox">
-            <h1><span id="messageWL"></span></h1>
-        </div>
-
-        <div class="col-md-3" id="totalWL">
-            <h1>Wins: <span id="winTotal"></span></h1>
-            <h1>Losses: <span id="loseTotal"></span></h1>
-        </div>
-    </div>
-    
-   
-    <div class="row" class="container" id="crystals">
-    </div>
-        
-    <div class="container" id="scoreBox" class="row">
-        <h5>Your Score is:</h5>
-    </div>
-    
-    <div class="container" id="resultBox" class="row">
-        <h5 id="totalScore"></h5>
-    </div>
-  
-
-
-
-    <!-- <script src="assets/javascript/jquery.js"></script>
- 
-    
-    <script src="assets/javascript/bootstrap.bundle.js"></script> -->
+    <button id="start_button">start game</button>
+    <div id="timer"></div>
+    <div id="question_div"></div>
+    <div id="choices_div"></div>
+    <div class="correct"></div>
+    <div class="incorrect"></div>
 
     
-    <script src="assets/javascript/game.js"></script>
+    <script src="assets/javascript/app.js"></script>
 
     <script>
             resetGame();
