@@ -11,7 +11,6 @@ $.fn.trivia = function() {
     _t.questions = [{
         question: "When you’re capernoited, what are you?",
         choices: ["Slightly Afraid", "Slightly drunk", "Slightly embarrassed", "Slightly out of tune"],
-        //images: ["../images/vo.gif"],
         correct: 1
     }, {
         question: "Cleromancy is divination involving what?",
@@ -23,7 +22,7 @@ $.fn.trivia = function() {
         correct: 3
     }, {
         question: "What do you have when you’re sciapodous?",
-        choices: ["Huge Nose", "Huge chin", "Huge feet", "Huge ears"],
+        choices: ["Huge nose", "Huge chin", "Huge feet", "Huge ears"],
         correct: 2
     }, {
         question: "What are you full of when you’re gambrinous?",
@@ -47,7 +46,7 @@ $.fn.trivia = function() {
         correct: 0
     }, {
         question: "Where is the dactylion?",
-        choices: ["Thumb", "Forfinger", "Middle finger", "Ring Finger"],
+        choices: ["Thumb", "Forefinger", "Middle finger", "Ring Finger"],
         correct: 2
     }, {
         question: "Presbycusis is the loss of what at old age?",
