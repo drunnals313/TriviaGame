@@ -1,6 +1,6 @@
-$.fn.trivia = function() {
+$.fn.tr = function() {
     var d = this;
-    d.userPick = null;
+    d.userPk = null;
     d.answers = {
         correct: 0,
         incorrect: 0
@@ -102,13 +102,13 @@ $.fn.trivia = function() {
                 button.attr('data-id', i);
                 $('#choicesArea').append(button);
             }
-            window.triviaCounter = setInterval(d.timer, 1000);
+            window.trCounter = setInterval(d.timer, 1000);
         } else {
             $('body').append($('<div />', {
                 text: 'Unanswered: ' + (
                     d.questions.length - (d.answers.correct + d.answers.incorrect)),
                 class: 'result'
-            }));
+            }));  //need to find a way to end this unanswered loop  the timer will keep going at the end and reprinting the unanswered amount.   only want to append once       if all of the questions are answered then the timer doesn't display at the end and keepreprinting unanswered every 30 seconds
             $('#startB').text('Restart').appendTo('body').show();
         }
     };
@@ -125,7 +125,7 @@ $.fn.trivia = function() {
     };
     d.nextQ = function() {
         d.current++;
-        clearInterval(window.triviaCounter);
+        clearInterval(window.trCounter);
         d.count = 30;
         $('#timer').html("");
         setTimeout(function() {
@@ -147,30 +147,32 @@ $.fn.trivia = function() {
     };
     return d;
 };
-var Trivia;
+var tr;
 
 $("#startB").click(function() {
     $(this).hide();
     $('.result').remove();
     $('div').html('');
-    Trivia = new $(window).trivia();
-    Trivia.ask();
+    tr = new $(window).tr();
+    tr.ask();
 });
 
 $('#choicesArea').on('click', 'button', function(e) {
-    var userPick = $(this).data("id"),
-        d = Trivia || $(window).trivia(),
+    var userPk = $(this).data("id"),
+        d = tr || $(window).tr(),
         temp = d.questions[d.current].correct,
         correct = d.questions[d.current].choices[temp];
 
-    if (userPick !== temp) {
+    if (userPk !== temp) {
         $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
         d.answer(false);
     } else {
         $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
         d.answer(true);
     }
+
     //I need to add logic here in order to get the not answered response 
+    
     d.nextQ();
 });
 

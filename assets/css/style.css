@@ -8,13 +8,15 @@ div {
 }
 
 #choicesArea {
-    font-size: 18px;
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration: bold;
+
 }
 
 #questionArea {
     font-weight: bolder;
     font-size: 20px;
-    
 }
 
 body {
@@ -29,7 +31,7 @@ body {
 #triviaTitle {
     position: relative;
     top: 5%;
-    Left: 20%;
+    Left: 10%;
     padding-top: 10px;
     text-align: center;
     font-weight: bolder;
@@ -39,8 +41,9 @@ body {
     margin-left:50px;
     margin-right: 50px; */
     background-color: rgba(247, 243, 243, 1);
-    width: 120px;
-    height: 40px;
+    max-width: 300px;
+    height: auto;
+    
 }
 
 #mainContent {
