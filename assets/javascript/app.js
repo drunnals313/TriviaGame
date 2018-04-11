@@ -1,14 +1,14 @@
 $.fn.trivia = function() {
-    var _t = this;
-    _t.userPick = null;
-    _t.answers = {
+    var d = this;
+    d.userPick = null;
+    d.answers = {
         correct: 0,
         incorrect: 0
     };
-    _t.images = null;
-    _t.count = 30;
-    _t.current = 0;
-    _t.questions = [{
+    d.images = null;
+    d.count = 30;
+    d.current = 0;
+    d.questions = [{
         question: "When you’re capernoited, what are you?",
         choices: ["Slightly Afraid", "Slightly drunk", "Slightly embarrassed", "Slightly out of tune"],
         correct: 1
@@ -89,11 +89,11 @@ $.fn.trivia = function() {
         choices: ["Humor", "Wisdom", "Curiousity", "Temper"],
         correct: 2
     }];
-    _t.ask = function() {
-        if (_t.questions[_t.current]) {
-            $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
-            $("#questionArea").html(_t.questions[_t.current].question);
-            var choicesArr = _t.questions[_t.current].choices;
+    d.ask = function() {
+        if (d.questions[d.current]) {
+            $("#timer").html("Time remaining: " + "00:" + d.count + " secs");
+            $("#questionArea").html(d.questions[d.current].question);
+            var choicesArr = d.questions[d.current].choices;
             var buttonsArr = [];
 
             for (var i = 0; i < choicesArr.length; i++) {
@@ -102,50 +102,50 @@ $.fn.trivia = function() {
                 button.attr('data-id', i);
                 $('#choicesArea').append(button);
             }
-            window.triviaCounter = setInterval(_t.timer, 1000);
+            window.triviaCounter = setInterval(d.timer, 1000);
         } else {
             $('body').append($('<div />', {
                 text: 'Unanswered: ' + (
-                    _t.questions.length - (_t.answers.correct + _t.answers.incorrect)),
+                    d.questions.length - (d.answers.correct + d.answers.incorrect)),
                 class: 'result'
             }));
             $('#startB').text('Restart').appendTo('body').show();
         }
     };
-    _t.timer = function() {
-        _t.count--;
-        if (_t.count <= 0) {
+    d.timer = function() {
+        d.count--;
+        if (d.count <= 0) {
             setTimeout(function() {
-                _t.nextQ();
+                d.nextQ();
             });
 
         } else {  //do I need this else?
-            $("#timer").html("Time remaining: " + "00:" + _t.count + " secs");
+            $("#timer").html("Time remaining: " + "00:" + d.count + " secs");
         }
     };
-    _t.nextQ = function() {
-        _t.current++;
+    d.nextQ = function() {
+        d.current++;
         clearInterval(window.triviaCounter);
-        _t.count = 30;
+        d.count = 30;
         $('#timer').html("");
         setTimeout(function() {
-            _t.cleanUp();
-            _t.ask();
+            d.cleanUp();
+            d.ask();
         }, 2500)
     };
-    _t.cleanUp = function() {
+    d.cleanUp = function() {
         $('div[id]').each(function(item) {
             $(this).html('');
         });
-        $('.correct').html('Correct answers: ' + _t.answers.correct);
-        $('.incorrect').html('Incorrect answers: ' + _t.answers.incorrect);
+        $('.correct').html('Correct answers: ' + d.answers.correct);
+        $('.incorrect').html('Incorrect answers: ' + d.answers.incorrect);
     };
-    _t.answer = function(correct) {
+    d.answer = function(correct) {
         var string = correct ? 'correct' : 'incorrect';
-        _t.answers[string]++;
-        $('.' + string).html(string + ' answers: ' + _t.answers[string]);
+        d.answers[string]++;
+        $('.' + string).html(string + ' answers: ' + d.answers[string]);
     };
-    return _t;
+    return d;
 };
 var Trivia;
 
@@ -159,18 +159,19 @@ $("#startB").click(function() {
 
 $('#choicesArea').on('click', 'button', function(e) {
     var userPick = $(this).data("id"),
-        _t = Trivia || $(window).trivia(),
-        temp = _t.questions[_t.current].correct,
-        correct = _t.questions[_t.current].choices[temp];
+        d = Trivia || $(window).trivia(),
+        temp = d.questions[d.current].correct,
+        correct = d.questions[d.current].choices[temp];
 
     if (userPick !== temp) {
         $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
-        _t.answer(false);
+        d.answer(false);
     } else {
         $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
-        _t.answer(true);
+        d.answer(true);
     }
-    _t.nextQ();
+    //I need to add logic here in order to get the not answered response 
+    d.nextQ();
 });
 
 
