@@ -108,7 +108,7 @@ $.fn.tr = function() {
                 text: 'Unanswered: ' + (
                     d.questions.length - (d.answers.correct + d.answers.incorrect)),
                 class: 'result'
-            }));  //need to find a way to end this unanswered loop  the timer will keep going at the end and reprinting the unanswered amount.   only want to append once       if all of the questions are answered then the timer doesn't display at the end and keepreprinting unanswered every 30 seconds
+            }));  //need to not display answer buttons once time runs out, if the user clicks on them after the time runs out then sometimes the loops for the next question and timer are slightly off .  
             $('#startB').text('Restart').appendTo('body').show();
         }
     };
@@ -166,7 +166,7 @@ $('#choicesArea').on('click', 'button', function(e) {
     if (userPk !== temp) {
         $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
         d.answer(false);
-    } else {
+    } else { //do I need thi else?
         $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
         d.answer(true);
     }
