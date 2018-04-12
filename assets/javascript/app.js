@@ -6,7 +6,7 @@ $.fn.tr = function() {
         incorrect: 0
     };
     d.images = null;
-    d.count = 30;
+    d.ct = 30;
     d.current = 0;
     d.questions = [{
         question: "When you’re capernoited, what are you?",
@@ -91,7 +91,7 @@ $.fn.tr = function() {
     }];
     d.ask = function() {
         if (d.questions[d.current]) {
-            $("#timer").html("Time remaining: " + "00:" + d.count + " secs");
+            $("#timer").html("Time remaining: " + d.ct + " secs");
             $("#questionArea").html(d.questions[d.current].question);
             var choicesArr = d.questions[d.current].choices;
             var buttonsArr = [];
@@ -113,20 +113,20 @@ $.fn.tr = function() {
         }
     };
     d.timer = function() {
-        d.count--;
-        if (d.count <= 0) {
+        d.ct--;
+        if (d.ct <= 0) {
             setTimeout(function() {
                 d.nextQ();
             });
 
         } else {  //do I need this else?
-            $("#timer").html("Time remaining: " + "00:" + d.count + " secs");
+            $("#timer").html("Time remaining: " + d.ct + " secs");
         }
     };
     d.nextQ = function() {
         d.current++;
         clearInterval(window.trCounter);
-        d.count = 30;
+        d.ct = 30;
         $('#timer').html("");
         setTimeout(function() {
             d.cleanUp();
