@@ -129,11 +129,11 @@ $.fn.tr = function() {
         d.ct = 30;
         $('#timer').html("");
         setTimeout(function() {
-            d.cleanUp();
+            d.reset();
             d.ask();
         }, 2500)
     };
-    d.cleanUp = function() {
+    d.reset = function() {
         $('div[id]').each(function(item) {
             $(this).html('');
         });
@@ -166,7 +166,7 @@ $('#choicesArea').on('click', 'button', function(e) {
     if (userPk !== temp) {
         $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
         d.answer(false);
-    } else { //do I need thi else?
+    } else { //do I need this else?
         $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
         d.answer(true);
     }
