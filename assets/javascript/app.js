@@ -3,7 +3,8 @@ $.fn.tr = function() {
     d.userPk = null;
     d.answers = {
         correct: 0,
-        incorrect: 0
+        incorrect: 0,
+        unanswered: 0
     };
     d.images = null;
     d.ct = 30;
@@ -139,6 +140,7 @@ $.fn.tr = function() {
         });
         $('.correct').html('Correct answers: ' + d.answers.correct);
         $('.incorrect').html('Incorrect answers: ' + d.answers.incorrect);
+        //$('.unanswered').html('Unanswered questions: ' + d.answers.unanswered);  //add unanswered here
     };
     d.answer = function(correct) {
         var string = correct ? 'correct' : 'incorrect';
@@ -157,7 +159,7 @@ $("#startB").click(function() {
     tr.ask();
 });
 
-$('#choicesArea').on('click', 'button', function(e) {
+$('#choicesArea').on('click', 'button', function(a) {  //a for any
     var userPk = $(this).data("id"),
         d = tr || $(window).tr(),
         temp = d.questions[d.current].correct,
@@ -166,12 +168,16 @@ $('#choicesArea').on('click', 'button', function(e) {
     if (userPk !== temp) {
         $('#choicesArea').text("Wrong Answer! The correct answer was: " + correct);
         d.answer(false);
-    } else { //do I need this else?
+    } else {
         $('#choicesArea').text("Correct!!! The correct answer was: " + correct);
         d.answer(true);
     }
-
-    //I need to add logic here in order to get the not answered response 
+    //I need to add logic here in order to get the not answered response to tell them the correct answer     commenting this out since it won't work; I need a function to say if timer count equals 0
+    //else {
+    //    $('#choicesArea').text("Sorry, too slow... The correct answer was: " + correct);
+   //     d.answer(null);
+    //}
+    
     
     d.nextQ();
 });
